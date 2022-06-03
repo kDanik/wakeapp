@@ -1,0 +1,16 @@
+:root {
+    --main-color-1: rgb(253, 248, 226);
+    --main-color-2: rgb(255, 221, 211);
+    --main-color-3: rgb(243, 191, 179);
+    --main-color-4: rgb(94, 169, 190);
+    --main-color-5: rgb(154, 205, 224);
+    --main-color-6: rgb(203, 225, 239);
+}
+
+body {
+    background-color: var(--main-color-1);
+}
+
+.title {
+    font-size: 30px;
+}
