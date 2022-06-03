@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <div th:fragment="alarmForm">
+        <form>
+            <div class="row mt-2">
+                <div class="form-group col-md-4 col-xs-12">
+                    <label for="arriveBy" class="custom-label" th:text="#{input.arriveBy.label}">
+                    </label>
+                    <input type="time" class="custom-input custom-time-input" id="arriveBy">
+                </div>
+            </div>
+
+            <div class="divider div-transparent mt-3"></div>
+
+            <div class="row mt-2">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="timeToGetReady" class="custom-label" th:text="#{input.timeToGetReady.label}">
+                    </label>
+                    <input type="number" class="custom-input custom-text-input" id="timeToGetReady"
+                           th:placeholder="#{input.timeToGetReady.placeholder}">
+                </div>
+            </div>
+
+            <div class="divider div-transparent mt-3"></div>
+
+            <div class="row mt-2">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="residence" class="custom-label" th:text="#{input.residence.label}">
+                    </label>
+                    <input type="text" class="custom-input custom-text-input" id="residence"
+                           th:placeholder="#{input.residence.placeholder}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-md-6 col-xs-12">
+                    <label for="destination" class="custom-label" th:text="#{input.destination.label}">
+                    </label>
+                    <input type="text" class="custom-input custom-text-input" id="destination"
+                           th:placeholder="#{input.destination.placeholder}">
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="custom-button" th:text="#{input.submitButton.text}"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
