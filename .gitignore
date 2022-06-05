@@ -1,3 +1,7 @@
+# api properties / keys
+my-api.properties
+
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
