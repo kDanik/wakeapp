@@ -4,12 +4,12 @@
 </head>
 <body>
     <div th:fragment="alarmForm">
-        <form>
+        <form action="#" th:action="@{/alarmForm}" th:object="${alarmForm}" method="post">
             <div class="row mt-2">
                 <div class="form-group col-md-4 col-xs-12">
                     <label for="arriveBy" class="custom-label" th:text="#{input.arriveBy.label}">
                     </label>
-                    <input type="time" class="custom-input custom-time-input" id="arriveBy">
+                    <input type="time" th:field="*{arriveBy}" class="custom-input custom-time-input" id="arriveBy">
                 </div>
             </div>
 
@@ -19,7 +19,7 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="timeToGetReady" class="custom-label" th:text="#{input.timeToGetReady.label}">
                     </label>
-                    <input type="number" class="custom-input custom-text-input" id="timeToGetReady"
+                    <input type="number" th:field="*{timeToGetReady}" class="custom-input custom-text-input" id="timeToGetReady"
                            th:placeholder="#{input.timeToGetReady.placeholder}">
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="residence" class="custom-label" th:text="#{input.residence.label}">
                     </label>
-                    <input type="text" class="custom-input custom-text-input" id="residence"
+                    <input type="text" th:field="*{addressResidence}" class="custom-input custom-text-input" id="residence"
                            th:placeholder="#{input.residence.placeholder}">
                 </div>
             </div>
@@ -39,29 +39,29 @@
                 <div class="form-group col-md-6 col-xs-12">
                     <label for="destination" class="custom-label" th:text="#{input.destination.label}">
                     </label>
-                    <input type="text" class="custom-input custom-text-input" id="destination"
+                    <input type="text" th:field="*{addressDestination}" class="custom-input custom-text-input" id="destination"
                            th:placeholder="#{input.destination.placeholder}">
                 </div>
             </div>
 
-            <!--div class="row mt-2">       TODO: Checkboxes for types of transport to use during calculation
+            <div class="row mt-2">      <!-- TODO: Checkboxes styling -->
                 <div class="d-flex justify-content-center block">
                     <div class="">
-                        <input type="checkbox" id="transportCheckboxBus">
+                        <input type="checkbox" th:field="*{useBus}" id="transportCheckboxBus">
                         <label for="transportCheckboxBus" th:text="#{input.transport.type.bus}"></label>
                     </div>
                     <div class="">
-                        <input type="checkbox" id="transportCheckboxUAndSBahn">
+                        <input type="checkbox" th:field="*{useSAndUBahn}" id="transportCheckboxUAndSBahn">
                         <label for="transportCheckboxUAndSBahn" th:text="#{input.transport.type.SandUBahn}"></label>
                     </div>
                     <div class="">
-                        <input type="checkbox" id="transportCheckboxTram">
+                        <input type="checkbox" th:field="*{useTram}" id="transportCheckboxTram">
                         <label for="transportCheckboxTram" th:text="#{input.transport.type.tram}"></label>
                     </div>
                 </div>
-            </div-->
+            </div>
 
-            <div class="row mt-2">
+            <div class="row mt-4">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="custom-button" th:text="#{input.submitButton.text}"></button>
                 </div>

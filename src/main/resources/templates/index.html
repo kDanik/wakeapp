@@ -23,6 +23,14 @@
 
             <th:block th:include="fragments/alarmForm.html :: alarmForm">
             </th:block>
+
+            <div class="row mt-2 mb-3">
+                <div class="mx-auto col-2   ">
+                    <div th:if="${alarmForm != null and alarmForm.calculatedAlarmTime != null}">
+                        <div th:text="${alarmForm.calculatedAlarmTime}"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
