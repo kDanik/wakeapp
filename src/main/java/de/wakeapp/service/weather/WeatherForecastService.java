@@ -1,8 +1,11 @@
 package de.wakeapp.service.weather;
 
-import org.apache.http.client.utils.URIBuilder;
 import de.wakeapp.service.properties.PropertiesNotFoundException;
+import org.apache.http.client.utils.URIBuilder;
+import org.json.JSONObject;
+import org.springframework.stereotype.Service;
 
+@Service
 public class WeatherForecastService extends WeatherApiBaseService {
     private static final String REQUEST_PATH = "data/2.5/forecast";
     private static final String RESPONSE_UNITS = "metric";
@@ -11,13 +14,13 @@ public class WeatherForecastService extends WeatherApiBaseService {
         super();
     }
 
-    public String getWeatherForecastBerlin() {
+    public JSONObject getWeatherForecastBerlin() {
         return getWeatherForecast("52.5200", "13.4050");
     }
 
-    public String getWeatherForecast(String latitude, String longitude) {
+    public JSONObject getWeatherForecast(String latitude, String longitude) {
         String url = buildRequestUrl(latitude, longitude);
-        return executeGetRequest(url);
+        return new JSONObject(executeGetRequest(url));
     }
 
     private String buildRequestUrl(String latitude, String longitude) {

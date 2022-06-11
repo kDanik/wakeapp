@@ -1,9 +1,9 @@
 package de.wakeapp;
 
+import de.wakeapp.service.bvg.location.BvgLocation;
+import de.wakeapp.service.bvg.location.BvgLocationQueryService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import de.wakeapp.service.bvg.BvgLocation;
-import de.wakeapp.service.bvg.location.BvgLocationQueryService;
 
 public class BvgLocationQueryServiceTest {
 

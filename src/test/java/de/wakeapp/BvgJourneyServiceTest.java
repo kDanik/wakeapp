@@ -1,10 +1,10 @@
 package de.wakeapp;
 
+import de.wakeapp.service.bvg.journey.BvgJourneyService;
+import de.wakeapp.service.bvg.location.BvgLocation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import de.wakeapp.service.bvg.BvgLocation;
-import de.wakeapp.service.bvg.journey.BvgJourneyService;
 
 import java.time.LocalDateTime;
 
@@ -25,10 +25,10 @@ public class BvgJourneyServiceTest {
      */
     @Test
     void journeyTest() {
-        Assertions.assertNotNull(BvgJourneyService.getJourneyInformation(validLocation1, validLocation2, LocalDateTime.now()));
-        Assertions.assertNotNull(BvgJourneyService.getJourneyInformation(validLocation2, validLocation1, LocalDateTime.now()));
+        Assertions.assertNotNull(BvgJourneyService.getJourneyInformation(validLocation1, validLocation2, LocalDateTime.now(), true, true, false));
+        Assertions.assertNotNull(BvgJourneyService.getJourneyInformation(validLocation2, validLocation1, LocalDateTime.now(), true, true, true));
 
-        Assertions.assertNull(BvgJourneyService.getJourneyInformation(invalidLocation, validLocation2 , LocalDateTime.now()));
-        Assertions.assertNull(BvgJourneyService.getJourneyInformation(validLocation1, invalidLocation , LocalDateTime.now()));
+        Assertions.assertNull(BvgJourneyService.getJourneyInformation(invalidLocation, validLocation2, LocalDateTime.now(), true, true, true));
+        Assertions.assertNull(BvgJourneyService.getJourneyInformation(validLocation1, invalidLocation, LocalDateTime.now(), false, true, false));
     }
 }

@@ -7,9 +7,10 @@
         <form action="#" th:action="@{/alarmForm}" th:object="${alarmForm}" method="post">
             <div class="row mt-2">
                 <div class="form-group col-md-4 col-xs-12">
-                    <label for="arriveBy" class="custom-label" th:text="#{input.arriveBy.label}">
+                    <label class="custom-label" for="arrivalTime" th:text="#{input.arrivalTime.label}">
                     </label>
-                    <input type="time" th:field="*{arriveBy}" class="custom-input custom-time-input" id="arriveBy">
+                    <input class="custom-input custom-time-input" id="arrivalTime" th:field="*{arrivalTime}"
+                           type="time">
                 </div>
             </div>
 

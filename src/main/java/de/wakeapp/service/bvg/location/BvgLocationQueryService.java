@@ -1,9 +1,7 @@
 package de.wakeapp.service.bvg.location;
 
-import org.apache.http.client.utils.URIBuilder;
 import de.wakeapp.service.bvg.BvgApiBaseService;
-import de.wakeapp.service.bvg.BvgLocation;
-import de.wakeapp.service.bvg.BvgLocationFactory;
+import org.apache.http.client.utils.URIBuilder;
 
 public class BvgLocationQueryService extends BvgApiBaseService {
     private static final String REQUEST_PATH = "locations";

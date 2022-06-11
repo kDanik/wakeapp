@@ -1,4 +1,4 @@
-package de.wakeapp.service.bvg;
+package de.wakeapp.service.bvg.location;
 
 import lombok.Getter;
 import lombok.ToString;

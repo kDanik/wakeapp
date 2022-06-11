@@ -8,15 +8,15 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AlarmTimeFormBean {
-    public String arriveBy;
-    public Integer timeToGetReady;
+    private String arrivalTime;
+    private Integer timeToGetReady;
 
-    public String addressResidence;
-    public String addressDestination;
+    private String addressResidence;
+    private String addressDestination;
 
-    public Boolean useBus;
-    public Boolean useTram;
-    public Boolean useSAndUBahn;
+    private Boolean useBus = true;
+    private Boolean useTram = true;
+    private Boolean useSAndUBahn = true;
 
-    public String calculatedAlarmTime;
+    private String calculatedAlarmTime;
 }
