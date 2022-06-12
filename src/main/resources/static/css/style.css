@@ -28,13 +28,22 @@ body {
     margin-left: 11px;
     margin-top: 17px;
 }
+
 .description {
     font-size: 16px;
     color: var(--default-text-color);
 }
 
+.result-text {
+    font-size: 18px;
+    font-weight: 200;
+    color: var(--main-color-4);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}
+
 .input-wrapper {
-    display:block;
+    display: block;
 }
 
 input.custom-input {

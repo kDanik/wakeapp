@@ -8,10 +8,10 @@
 <body>
 <div class="container-flex" style="padding: 10px">
     <div class="row">
-        <div class="d-flex justify-content-center title">
-            <strong th:text="#{title}"></strong>
-            <img th:src="@{/images/alarm-clock-icon.png}" class="pt-1 alarm-icon">
-        </div>
+            <div class="d-flex justify-content-center title">
+                <strong th:text="#{title}"></strong>
+                <img th:src="@{/images/alarm-clock-icon.png}" class="pt-1 alarm-icon">
+            </div>
     </div>
 
     <div class="row mt-2">
@@ -23,14 +23,6 @@
 
             <th:block th:include="fragments/alarmForm.html :: alarmForm">
             </th:block>
-
-            <div class="row mt-2 mb-3">
-                <div class="mx-auto col-2">
-                    <div th:if="${alarmForm != null and alarmForm.calculatedAlarmTime != null}">
-                        <div th:text="${alarmForm.calculatedAlarmTime}"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

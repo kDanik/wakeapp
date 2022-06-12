@@ -70,6 +70,16 @@
             </div>
         </div>
 
+        <div th:if="${alarmForm != null and alarmForm.calculatedAlarmTime != null}">
+            <div class="divider div-transparent mt-3"></div>
+            <div class="row mt-1">
+                <div class="col-12 result-text text-center">
+                    <span th:text="#{result.text}"></span>
+                    <strong th:text="${alarmForm.calculatedAlarmTime}"></strong>
+                </div>
+            </div>
+        </div>
+
         <div class="row mt-4">
             <div class="d-flex justify-content-center">
                 <button class="custom-button" th:text="#{input.submitButton.text}" type="submit"></button>
