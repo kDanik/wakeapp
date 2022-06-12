@@ -46,6 +46,17 @@ label.custom-label {
     color: var(--default-text-color);
 }
 
+label.custom-checkbox-label {
+    vertical-align: middle;
+    margin-left: 4px;
+    font-size: 14px;
+    color: var(--default-text-color);
+}
+
+#transportCheckBoxes input[type=checkbox] {
+    vertical-align: middle;
+}
+
 input[type=time].custom-time-input {
     width: 100%;
     max-width: 100px;

@@ -3,71 +3,79 @@
 <head>
 </head>
 <body>
-    <div th:fragment="alarmForm">
-        <form action="#" th:action="@{/alarmForm}" th:object="${alarmForm}" method="post">
-            <div class="row mt-2">
-                <div class="form-group col-md-4 col-xs-12">
-                    <label class="custom-label" for="arrivalTime" th:text="#{input.arrivalTime.label}">
-                    </label>
-                    <input class="custom-input custom-time-input" id="arrivalTime" th:field="*{arrivalTime}"
-                           type="time">
-                </div>
+<div th:fragment="alarmForm">
+    <form action="#" method="post" th:action="@{/alarmForm}" th:object="${alarmForm}">
+        <div class="row mt-2">
+            <div class="form-group col-md-4 col-xs-12">
+                <label class="custom-label" for="arrivalTime" th:text="#{input.arrivalTime.label}">
+                </label>
+                <input class="custom-input custom-time-input" id="arrivalTime" th:field="*{arrivalTime}"
+                       type="time">
             </div>
+        </div>
 
-            <div class="divider div-transparent mt-3"></div>
+        <div class="divider div-transparent mt-3"></div>
 
-            <div class="row mt-2">
-                <div class="form-group col-md-6 col-xs-12">
-                    <label for="timeToGetReady" class="custom-label" th:text="#{input.timeToGetReady.label}">
-                    </label>
-                    <input type="number" th:field="*{timeToGetReady}" class="custom-input custom-text-input" id="timeToGetReady"
-                           th:placeholder="#{input.timeToGetReady.placeholder}">
-                </div>
+        <div class="row mt-2">
+            <div class="form-group col-md-6 col-xs-12">
+                <label class="custom-label" for="timeToGetReady" th:text="#{input.timeToGetReady.label}">
+                </label>
+                <input class="custom-input custom-text-input" id="timeToGetReady" th:field="*{timeToGetReady}"
+                       th:placeholder="#{input.timeToGetReady.placeholder}"
+                       type="number">
             </div>
+        </div>
 
-            <div class="divider div-transparent mt-3"></div>
+        <div class="divider div-transparent mt-3"></div>
 
-            <div class="row mt-2">
-                <div class="form-group col-md-6 col-xs-12">
-                    <label for="residence" class="custom-label" th:text="#{input.residence.label}">
-                    </label>
-                    <input type="text" th:field="*{addressResidence}" class="custom-input custom-text-input" id="residence"
-                           th:placeholder="#{input.residence.placeholder}">
-                </div>
+        <div class="row mt-2">
+            <div class="form-group col-md-6 col-xs-12">
+                <label class="custom-label" for="residence" th:text="#{input.residence.label}">
+                </label>
+                <input class="custom-input custom-text-input" id="residence" th:field="*{addressResidence}"
+                       th:placeholder="#{input.residence.placeholder}"
+                       type="text">
             </div>
+        </div>
 
-            <div class="row mt-2">
-                <div class="form-group col-md-6 col-xs-12">
-                    <label for="destination" class="custom-label" th:text="#{input.destination.label}">
-                    </label>
-                    <input type="text" th:field="*{addressDestination}" class="custom-input custom-text-input" id="destination"
-                           th:placeholder="#{input.destination.placeholder}">
-                </div>
+        <div class="row mt-2">
+            <div class="form-group col-md-6 col-xs-12">
+                <label class="custom-label" for="destination" th:text="#{input.destination.label}">
+                </label>
+                <input class="custom-input custom-text-input" id="destination" th:field="*{addressDestination}"
+                       th:placeholder="#{input.destination.placeholder}"
+                       type="text">
             </div>
+        </div>
 
-            <div class="row mt-2">      <!-- TODO: Checkboxes styling -->
-                <div class="d-flex justify-content-center block">
-                    <div class="">
-                        <input type="checkbox" th:field="*{useBus}" id="transportCheckboxBus">
-                        <label for="transportCheckboxBus" th:text="#{input.transport.type.bus}"></label>
-                    </div>
-                    <div class="">
-                        <input type="checkbox" th:field="*{useSAndUBahn}" id="transportCheckboxUAndSBahn">
-                        <label for="transportCheckboxUAndSBahn" th:text="#{input.transport.type.SandUBahn}"></label>
-                    </div>
-                    <div class="">
-                        <input type="checkbox" th:field="*{useTram}" id="transportCheckboxTram">
-                        <label for="transportCheckboxTram" th:text="#{input.transport.type.tram}"></label>
-                    </div>
-                </div>
+        <div class="row mt-2" id="transportCheckBoxes">
+            <div class="col-12">
+                <label class="custom-label" for="transportCheckBoxes" th:text="#{input.transport.type.label}">
+                </label>
             </div>
+            <div class="col-12">
+                <input id="transportCheckboxBus" th:field="*{useBus}" type="checkbox">
+                <label class="custom-checkbox-label" for="transportCheckboxBus"
+                       th:text="#{input.transport.type.bus}"></label>
+            </div>
+            <div class="col-12 mt-1">
+                <input id="transportCheckboxUAndSBahn" th:field="*{useSAndUBahn}" type="checkbox">
+                <label class="custom-checkbox-label" for="transportCheckboxUAndSBahn"
+                       th:text="#{input.transport.type.SandUBahn}"></label>
+            </div>
+            <div class="col-12 mt-1">
+                <input id="transportCheckboxTram" th:field="*{useTram}" type="checkbox">
+                <label class="custom-checkbox-label" for="transportCheckboxTram"
+                       th:text="#{input.transport.type.tram}"></label>
+            </div>
+        </div>
 
-            <div class="row mt-4">
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="custom-button" th:text="#{input.submitButton.text}"></button>
-                </div>
+        <div class="row mt-4">
+            <div class="d-flex justify-content-center">
+                <button class="custom-button" th:text="#{input.submitButton.text}" type="submit"></button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
