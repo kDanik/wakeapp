@@ -14,10 +14,6 @@ public class WeatherForecastService extends WeatherApiBaseService {
         super();
     }
 
-    public JSONObject getWeatherForecastBerlin() {
-        return getWeatherForecast("52.5200", "13.4050");
-    }
-
     public JSONObject getWeatherForecast(String latitude, String longitude) {
         String url = buildRequestUrl(latitude, longitude);
         return new JSONObject(executeGetRequest(url));

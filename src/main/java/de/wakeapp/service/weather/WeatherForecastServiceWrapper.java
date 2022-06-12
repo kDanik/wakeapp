@@ -23,8 +23,12 @@ public class WeatherForecastServiceWrapper {
         this.localDateTimeConverter = localDateTimeConverter;
     }
 
+    public JSONObject getWeatherForecastBerlin() {
+        return weatherForecastService.getWeatherForecast("52.5200", "13.4050");
+    }
+
     public boolean willBeSnowyOrRainyWeather(LocalDateTime whenCET) {
-        JSONArray weatherForecastList = weatherForecastService.getWeatherForecastBerlin().getJSONArray("list");
+        JSONArray weatherForecastList = getWeatherForecastBerlin().getJSONArray("list");
 
         JSONObject closestForecast = findClosestForecast(whenCET, weatherForecastList);
 
