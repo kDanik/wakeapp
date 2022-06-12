@@ -25,9 +25,8 @@ public class BvgJourneyService extends BvgApiBaseService {
 
         // get departure time from first journeyPart
         JSONObject initial = journeyParts.getJSONObject(0);
-        LocalDateTime departureTime = LocalDateTime.parse(initial.getString("departure"), DateTimeFormatter.ISO_ZONED_DATE_TIME);
 
-        return departureTime;
+        return LocalDateTime.parse(initial.getString("departure"), DateTimeFormatter.ISO_ZONED_DATE_TIME);
     }
 
     public static JSONObject getJourneyInformation(BvgLocation from, BvgLocation to, LocalDateTime arrivalBy, boolean useBus, boolean useSAndUBahn, boolean useTram) {
@@ -47,35 +46,43 @@ public class BvgJourneyService extends BvgApiBaseService {
                 .addParameter("bus", String.valueOf(useBus))
                 .addParameter("tram", String.valueOf(useTram));
 
-        if (from.getType().equals(BvgLocation.POINT_OF_INTEREST)) {
-            uriBuilder.addParameter("from.id", String.valueOf(from.getId()));
-            uriBuilder.addParameter("from.latitude", from.getLatitude());
-            uriBuilder.addParameter("from.longitude", from.getLongitude());
-            uriBuilder.addParameter("from.name", from.getName());
+        switch (from.getType()) {
+            case BvgLocation.POINT_OF_INTEREST:
+                uriBuilder.addParameter("from.id", String.valueOf(from.getId()));
+                uriBuilder.addParameter("from.latitude", from.getLatitude());
+                uriBuilder.addParameter("from.longitude", from.getLongitude());
+                uriBuilder.addParameter("from.name", from.getName());
 
-        } else if (from.getType().equals(BvgLocation.ADDRESS)) {
-            uriBuilder.addParameter("from.latitude", from.getLatitude());
-            uriBuilder.addParameter("from.longitude", from.getLongitude());
-            uriBuilder.addParameter("from.address", from.getAddress());
+                break;
+            case BvgLocation.ADDRESS:
+                uriBuilder.addParameter("from.latitude", from.getLatitude());
+                uriBuilder.addParameter("from.longitude", from.getLongitude());
+                uriBuilder.addParameter("from.address", from.getAddress());
 
-        } else if (from.getType().equals(BvgLocation.STATION)) {
-            uriBuilder.addParameter("from", String.valueOf(from.getId()));
+                break;
+            case BvgLocation.STATION:
+                uriBuilder.addParameter("from", String.valueOf(from.getId()));
+                break;
         }
 
 
-        if (to.getType().equals(BvgLocation.POINT_OF_INTEREST)) {
-            uriBuilder.addParameter("to.id", to.getId());
-            uriBuilder.addParameter("to.latitude", to.getLatitude());
-            uriBuilder.addParameter("to.longitude", to.getLongitude());
-            uriBuilder.addParameter("to.name", to.getName());
+        switch (to.getType()) {
+            case BvgLocation.POINT_OF_INTEREST:
+                uriBuilder.addParameter("to.id", to.getId());
+                uriBuilder.addParameter("to.latitude", to.getLatitude());
+                uriBuilder.addParameter("to.longitude", to.getLongitude());
+                uriBuilder.addParameter("to.name", to.getName());
 
-        } else if (to.getType().equals(BvgLocation.ADDRESS)) {
-            uriBuilder.addParameter("to.latitude", to.getLatitude());
-            uriBuilder.addParameter("to.longitude", to.getLongitude());
-            uriBuilder.addParameter("to.address", to.getAddress());
+                break;
+            case BvgLocation.ADDRESS:
+                uriBuilder.addParameter("to.latitude", to.getLatitude());
+                uriBuilder.addParameter("to.longitude", to.getLongitude());
+                uriBuilder.addParameter("to.address", to.getAddress());
 
-        } else if (to.getType().equals(BvgLocation.STATION)) {
-            uriBuilder.addParameter("to", to.getId());
+                break;
+            case BvgLocation.STATION:
+                uriBuilder.addParameter("to", to.getId());
+                break;
         }
 
         return uriBuilder.toString();

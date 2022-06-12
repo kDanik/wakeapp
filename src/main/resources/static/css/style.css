@@ -42,10 +42,6 @@ body {
     text-decoration-thickness: 1px;
 }
 
-.input-wrapper {
-    display: block;
-}
-
 input.custom-input {
     display: block;
 }

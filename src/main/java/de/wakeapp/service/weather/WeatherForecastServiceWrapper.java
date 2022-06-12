@@ -32,7 +32,7 @@ public class WeatherForecastServiceWrapper {
 
         JSONObject closestForecast = findClosestForecast(whenCET, weatherForecastList);
 
-        Set weatherConditions = getWeatherConditions(closestForecast);
+        Set<String> weatherConditions = getWeatherConditions(closestForecast);
 
         // TODO intensity of weather condition matters more than just presence of condition! Slight rain or slight snow doesnt effect travel time so much.
         return weatherConditions.contains("Rain") || weatherConditions.contains("Snow") || weatherConditions.contains("Thunder");
@@ -53,7 +53,7 @@ public class WeatherForecastServiceWrapper {
         return null;
     }
 
-    private Set getWeatherConditions(JSONObject forecast) {
+    private Set<String> getWeatherConditions(JSONObject forecast) {
         Set<String> weatherConditions = new HashSet<>();
 
         JSONArray weatherArray = forecast.getJSONArray("weather");

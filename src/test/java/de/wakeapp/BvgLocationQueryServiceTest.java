@@ -16,7 +16,7 @@ public class BvgLocationQueryServiceTest {
 
         BvgLocation test = BvgLocationQueryService.getLocationInfoForQuery(query);
 
-        Assertions.assertTrue(test.getType().equals(BvgLocation.ADDRESS));
+        Assertions.assertEquals(BvgLocation.ADDRESS, test.getType());
         Assertions.assertNotNull(test.getLatitude());
         Assertions.assertNotNull(test.getLongitude());
         Assertions.assertNotNull(test.getAddress());
@@ -34,7 +34,7 @@ public class BvgLocationQueryServiceTest {
 
         BvgLocation test = BvgLocationQueryService.getLocationInfoForQuery(query);
 
-        Assertions.assertTrue(test.getType().equals(BvgLocation.POINT_OF_INTEREST));
+        Assertions.assertEquals(BvgLocation.POINT_OF_INTEREST, test.getType());
         Assertions.assertNotNull(test.getId());
         Assertions.assertNotNull(test.getName());
         Assertions.assertNotNull(test.getLatitude());
@@ -52,7 +52,7 @@ public class BvgLocationQueryServiceTest {
 
         BvgLocation test = BvgLocationQueryService.getLocationInfoForQuery(query);
 
-        Assertions.assertTrue(test.getType().equals(BvgLocation.STATION));
+        Assertions.assertEquals(BvgLocation.STATION, test.getType());
         Assertions.assertNotNull(test.getId());
         Assertions.assertNotNull(test.getName());
 
