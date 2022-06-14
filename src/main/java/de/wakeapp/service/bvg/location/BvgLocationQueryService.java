@@ -12,6 +12,7 @@ public class BvgLocationQueryService extends BvgApiBaseService {
         String url = buildRequestUrl(query);
         String result = executeGetRequest(url);
         return BvgLocationFactory.createFromJsonString(result);
+        //TODO exception instead of return null (also for validation)
     }
 
     private static String buildRequestUrl(String query) {

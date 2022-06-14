@@ -40,4 +40,16 @@ public class BvgLocation {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+    public String getDescriptiveName() {
+        if (this.type.equals(POINT_OF_INTEREST) || this.type.equals(STATION)) {
+            return this.name;
+        }
+
+        if (this.type.equals(ADDRESS)) {
+            return address;
+        }
+
+        return null;
+    }
 }

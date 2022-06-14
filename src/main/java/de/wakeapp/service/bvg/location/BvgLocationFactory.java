@@ -12,6 +12,9 @@ public class BvgLocationFactory {
         } catch (JSONException jsonException) {
             jsonException.printStackTrace();
             return null;
+        } catch (NullPointerException nullPointerException) {
+            nullPointerException.printStackTrace();
+            return null;
         }
 
         String type = jsonObject.optString("type");

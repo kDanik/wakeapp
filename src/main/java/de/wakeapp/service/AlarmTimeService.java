@@ -56,5 +56,4 @@ public class AlarmTimeService {
         }
         return calculatedAlarmTime;
     }
-
 }

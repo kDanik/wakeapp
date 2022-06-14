@@ -97,14 +97,17 @@ input[type=number].custom-text-input:focus {
     border-width: 2px;
 }
 
-.divider
-{
+.input-error-text {
+    color: orangered;
+    font-size: 10px;
+}
+
+.divider {
     position: relative;
     height: 1px;
 }
 
-.div-transparent:before
-{
+.div-transparent:before {
     content: "";
     position: absolute;
     top: 0;

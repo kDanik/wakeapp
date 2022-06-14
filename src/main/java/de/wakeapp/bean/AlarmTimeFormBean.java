@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 public class AlarmTimeFormBean {
     private String arrivalTime;
-    private Integer timeToGetReady;
+    private Integer timeToGetReady = 0;
 
     private String addressResidence;
     private String addressDestination;

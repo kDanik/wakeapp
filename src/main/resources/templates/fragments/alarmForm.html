@@ -11,6 +11,9 @@
                 </label>
                 <input class="custom-input custom-time-input" id="arrivalTime" th:field="*{arrivalTime}"
                        type="time">
+                <div class="input-error-text"
+                     th:if="${bindingResult != null && bindingResult.getFieldError('arrivalTime') != null}"
+                     th:text="#{${bindingResult.getFieldError('arrivalTime').getCode()}}"></div>
             </div>
         </div>
 
@@ -23,6 +26,9 @@
                 <input class="custom-input custom-text-input" id="timeToGetReady" th:field="*{timeToGetReady}"
                        th:placeholder="#{input.timeToGetReady.placeholder}"
                        type="number">
+                <div class="input-error-text"
+                     th:if="${bindingResult != null && bindingResult.getFieldError('timeToGetReady') != null}"
+                     th:text="#{${bindingResult.getFieldError('timeToGetReady').getCode()}}"></div>
             </div>
         </div>
 
@@ -35,6 +41,9 @@
                 <input class="custom-input custom-text-input" id="residence" th:field="*{addressResidence}"
                        th:placeholder="#{input.residence.placeholder}"
                        type="text">
+                <div class="input-error-text"
+                     th:if="${bindingResult != null && bindingResult.getFieldError('addressResidence') != null}"
+                     th:text="#{${bindingResult.getFieldError('addressResidence').getCode}}"></div>
             </div>
         </div>
 
@@ -45,6 +54,9 @@
                 <input class="custom-input custom-text-input" id="destination" th:field="*{addressDestination}"
                        th:placeholder="#{input.destination.placeholder}"
                        type="text">
+                <div class="input-error-text"
+                     th:if="${bindingResult != null && bindingResult.getFieldError('addressDestination') != null}"
+                     th:text="#{${bindingResult.getFieldError('addressDestination').getCode()}}"></div>
             </div>
         </div>
 
