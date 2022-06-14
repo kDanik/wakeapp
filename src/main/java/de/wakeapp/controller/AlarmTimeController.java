@@ -53,7 +53,7 @@ public class AlarmTimeController {
         replaceAddressesWithDescriptiveNames(alarmTimeFormBean);
 
         LocalDateTime alarmTime = alarmTimeService.calculateAlarmTime(alarmTimeFormBean);
-        alarmTimeFormBean.setCalculatedAlarmTime(alarmTime.toString());
+        alarmTimeFormBean.setCalculatedAlarmTime(formatCalculatedAlarmTime(alarmTime.toString()));
 
         model.addAttribute("alarmForm", alarmTimeFormBean);
         return "index";
@@ -65,5 +65,10 @@ public class AlarmTimeController {
 
         alarmTimeFormBean.setAddressDestination(descriptiveDestinationName);
         alarmTimeFormBean.setAddressResidence(descriptiveResidenceName);
+    }
+
+    private String formatCalculatedAlarmTime(String unformattedAlarmTime) {
+        unformattedAlarmTime = unformattedAlarmTime.replace("T", " ");
+        return unformattedAlarmTime;
     }
 }
