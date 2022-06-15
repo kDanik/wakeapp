@@ -1,5 +1,6 @@
 # api properties / keys
 my-api.properties
+application-local.properties
 
 
 HELP.md

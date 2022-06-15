@@ -86,15 +86,25 @@
             <div class="divider div-transparent mt-3"></div>
             <div class="row mt-1">
                 <div class="col-12 result-text text-center">
-                    <span th:text="#{result.text}"></span>
+                    <span th:text="#{result.calculate.text}"></span>
                     <strong th:text="${alarmForm.calculatedAlarmTime}"></strong>
                 </div>
             </div>
         </div>
-
+        <div th:if="${alarmFormSavedToDb != null}">
+            <div class="divider div-transparent mt-3"></div>
+            <div class="row mt-1">
+                <div class="col-12 result-text text-center">
+                    <span th:text="#{result.save.text}"></span>
+                </div>
+            </div>
+        </div>
         <div class="row mt-4">
             <div class="d-flex justify-content-center">
-                <button class="custom-button" th:text="#{input.submitButton.text}" type="submit"></button>
+                <button class="custom-button calculate-button" name="action"
+                        th:text="#{input.submitButton.calculate.text}" type="submit" value="calculate"></button>
+                <button class="custom-button save-button" name="action" th:text="#{input.submitButton.save.text}"
+                        type="submit" value="save"></button>
             </div>
         </div>
     </form>

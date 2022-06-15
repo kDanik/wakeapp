@@ -6,7 +6,11 @@
     --main-color-5: rgb(154, 205, 224);
     --main-color-6: rgb(203, 225, 239);
 
-    --default-text-color: rgb(51,51,51);
+    --main-color-7: rgb(154, 241, 121);
+    --main-color-8: rgb(213, 238, 200);
+    --main-color-9: rgb(101, 171, 71);
+
+    --default-text-color: rgb(51, 51, 51);
 
     font-family: Verdana;
 }
@@ -66,7 +70,8 @@ input[type=time].custom-time-input {
     width: 100%;
     max-width: 100px;
 
-    font-size: 18px;
+    font-weight: 200;
+    font-size: 16px;
     letter-spacing: 0.2em;
     padding-left: 7px;
 
@@ -118,19 +123,37 @@ input[type=number].custom-text-input:focus {
 
 .custom-button {
     display:inline-block;
-    border: 2px solid var(--main-color-5);
     border-radius: 2px;
     width: 90%;
     max-width: 200px;
     background-color: transparent;
-    color: var(--main-color-4);
     transition: 1s;
 }
 
 .custom-button:hover,
 .custom-button:focus {
+    transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+}
+
+.calculate-button {
+    border: 2px solid var(--main-color-5);
+    color: var(--main-color-4);
+    margin-right: 20px;
+}
+
+.calculate-button:hover,
+.calculate-button:focus {
     background-color: var(--main-color-6);
-    transform:scale(1.1,1.1);
-    -webkit-transform:scale(1.1,1.1);
-    -moz-transform:scale(1.1,1.1);
+}
+
+.save-button {
+    border: 2px solid var(--main-color-7);
+    color: var(--main-color-9);
+}
+
+.save-button:hover,
+.save-button:focus {
+    background-color: var(--main-color-8);
 }

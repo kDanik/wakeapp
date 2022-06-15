@@ -8,6 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AlarmTimeFormBean {
+    private String name;
+
     private String arrivalTime;
     private Integer timeToGetReady = 0;
 
