@@ -31,10 +31,12 @@ public class AlarmFormRepositoryService {
         newAlarmForm.setUseSAndUBahn(alarmTimeFormBean.getUseSAndUBahn());
         newAlarmForm.setUseTram(alarmTimeFormBean.getUseTram());
 
+        newAlarmForm.setName(alarmTimeFormBean.getName());
+
         return alarmFormRepository.save(newAlarmForm);
     }
 
-    public AlarmTimeFormBean retrieveAlarmFormAsBean(Long id) {
+    public AlarmTimeFormBean retrieveAlarmFormAsBean(Integer id) {
         Optional<AlarmForm> alarmFormOptional = alarmFormRepository.findById(id);
         if (!alarmFormOptional.isPresent()) {
             return null;
@@ -53,8 +55,13 @@ public class AlarmFormRepositoryService {
         alarmTimeFormBean.setUseBus(alarmForm.getUseBus());
         alarmTimeFormBean.setUseSAndUBahn(alarmForm.getUseSAndUBahn());
         alarmTimeFormBean.setUseTram(alarmForm.getUseTram());
+        alarmTimeFormBean.setName(alarmForm.getName());
 
         return alarmTimeFormBean;
+    }
+
+    public boolean isValidId(Integer id) {
+        return alarmFormRepository.findById(id).isPresent();
     }
 
     public Map<Integer, String> retrieveAllIdNamePairs() {

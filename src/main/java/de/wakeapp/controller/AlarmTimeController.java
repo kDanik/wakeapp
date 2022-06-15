@@ -1,6 +1,7 @@
 package de.wakeapp.controller;
 
 import de.wakeapp.bean.AlarmTimeFormBean;
+import de.wakeapp.model.AlarmForm;
 import de.wakeapp.service.AlarmFormRepositoryService;
 import de.wakeapp.service.AlarmTimeService;
 import de.wakeapp.service.bvg.location.BvgLocationQueryService;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 
@@ -38,19 +40,37 @@ public class AlarmTimeController {
 
 
     @GetMapping({"", "/", "/alarmForm"})
-    public String getNewForm(Model model) {
-        model.addAttribute("alarmForm", new AlarmTimeFormBean());
+    public String getForm(Model model) {
+        model.addAttribute("alarmFormNameIdPairs", alarmFormRepositoryService.retrieveAllIdNamePairs());
+
+        if (model.containsAttribute("retrieveAlarmFormWithId")) {
+            try {
+                Integer id = (Integer) model.getAttribute("retrieveAlarmFormWithId");
+                AlarmTimeFormBean alarmTimeFormBean = alarmFormRepositoryService.retrieveAlarmFormAsBean(id);
+
+                model.addAttribute("alarmForm", alarmTimeFormBean);
+            } catch (Exception e) {
+                model.addAttribute("alarmForm", new AlarmTimeFormBean());
+            }
+        } else {
+            model.addAttribute("alarmForm", new AlarmTimeFormBean());
+        }
+
         return "index";
     }
 
     @GetMapping("/alarmForm/{id}")
-    public String getForm(@PathVariable Long id, Model model) {
-        model.addAttribute("alarmForm", alarmFormRepositoryService.retrieveAlarmFormAsBean(id));
-        return "index";
+    public String getSavedForm(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+        if (alarmFormRepositoryService.isValidId(id)) {
+            redirectAttributes.addFlashAttribute("retrieveAlarmFormWithId", id);
+        }
+
+        return "redirect:/alarmForm";
     }
 
     @RequestMapping(value = "/alarmForm", method = RequestMethod.POST, params = "action=calculate")
     public String calculateAlarmTime(@Validated @ModelAttribute AlarmTimeFormBean alarmTimeFormBean, BindingResult bindingResult, Model model) {
+        model.addAttribute("alarmFormNameIdPairs", alarmFormRepositoryService.retrieveAllIdNamePairs());
         model.addAttribute("bindingResult", bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -68,21 +88,22 @@ public class AlarmTimeController {
     }
 
     @RequestMapping(value = "/alarmForm", method = RequestMethod.POST, params = "action=save")
-    public String saveAlarmTimeForm(@Validated @ModelAttribute AlarmTimeFormBean alarmTimeFormBean, BindingResult bindingResult, Model model) {
+    public String saveAlarmTimeForm(@Validated @ModelAttribute AlarmTimeFormBean alarmTimeFormBean, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         model.addAttribute("bindingResult", bindingResult);
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("alarmFormNameIdPairs", alarmFormRepositoryService.retrieveAllIdNamePairs());
             model.addAttribute("alarmForm", alarmTimeFormBean);
             return "index";
         }
 
         replaceAddressesWithDescriptiveNames(alarmTimeFormBean);
+        AlarmForm savedForm = alarmFormRepositoryService.saveAlarmTimeFormBean(alarmTimeFormBean);
 
-        alarmFormRepositoryService.saveAlarmTimeFormBean(alarmTimeFormBean);
+        redirectAttributes.addFlashAttribute("alarmFormSavedToDb", true);
+        redirectAttributes.addFlashAttribute("retrieveAlarmFormWithId", savedForm.getId());
 
-        model.addAttribute("alarmFormSavedToDb", true);
-        model.addAttribute("alarmForm", alarmTimeFormBean);
-        return "index";
+        return "redirect:/alarmForm";
     }
 
     private void replaceAddressesWithDescriptiveNames(AlarmTimeFormBean alarmTimeFormBean) {

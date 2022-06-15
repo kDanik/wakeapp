@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="previousFormsSelect">
+    <div class="row">
+        <div class="col-6">
+            <label class="custom-label" for="previousFormsSelect" th:text="#{input.previousFormsSelect.label}">
+            </label>
+            <select id="previousFormsSelect">
+                <option disabled selected th:text="#{input.previousFormsSelect.placeholder}" value=""></option>
+                <th:block th:each="nameIdPair : ${alarmFormNameIdPairs}">
+                    <th:block th:switch="${nameIdPair.value}">
+                        <option th:case="${null}" th:text="${nameIdPair.key}" th:value="${nameIdPair.key}"></option>
+                        <option th:case="*" th:text="${nameIdPair.value}" th:value="${nameIdPair.key}"></option>
+                    </th:block>
+                </th:block>
+            </select>
+        </div>
+    </div>
+
+    <script defer>
+        function redirectToSelectedId() {
+            console.log("test");
+            let selectedOption = document.getElementById("previousFormsSelect").value;
+            if (selectedOption !== "") {
+                window.location.href = '/alarmForm/' + selectedOption;
+            }
+        }
+
+        document.getElementById("previousFormsSelect").addEventListener("change", redirectToSelectedId);
+    </script>
+</div>
+</body>
+</html>
