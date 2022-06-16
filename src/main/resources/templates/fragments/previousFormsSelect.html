@@ -5,11 +5,16 @@
 <body>
 <div th:fragment="previousFormsSelect">
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6 col-xs-12">
             <label class="custom-label" for="previousFormsSelect" th:text="#{input.previousFormsSelect.label}">
             </label>
-            <select id="previousFormsSelect">
-                <option disabled selected th:text="#{input.previousFormsSelect.placeholder}" value=""></option>
+            <select class="custom-select" id="previousFormsSelect">
+                <option disabled selected th:if="${!alarmFormNameIdPairs.isEmpty()}"
+                        th:text="#{input.previousFormsSelect.placeholder}" value=""></option>
+
+                <option disabled selected th:if="${alarmFormNameIdPairs.isEmpty()}"
+                        th:text="#{input.previousFormsSelect.noResults.placeholder}" value=""></option>
+
                 <th:block th:each="nameIdPair : ${alarmFormNameIdPairs}">
                     <th:block th:switch="${nameIdPair.value}">
                         <option th:case="${null}" th:text="${nameIdPair.key}" th:value="${nameIdPair.key}"></option>
