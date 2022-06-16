@@ -137,12 +137,12 @@ select.custom-select:focus {
 }
 
 .custom-button {
-    display:inline-block;
+    display: inline-block;
     border-radius: 2px;
     width: 90%;
     max-width: 200px;
     background-color: transparent;
-    transition: 1s;
+    transition: 0.75s;
 }
 
 .custom-button:hover,
@@ -160,6 +160,20 @@ select.custom-select:focus {
 
 .calculate-button:hover,
 .calculate-button:focus {
+    background-color: var(--main-color-6);
+}
+
+
+.locale-change-button {
+    border: 2px solid var(--main-color-5);
+    color: var(--main-color-4);
+    margin-right: 30px;
+
+    max-width: 200px;
+}
+
+.locale-change-button:hover,
+.locale-change-button:focus {
     background-color: var(--main-color-6);
 }
 
