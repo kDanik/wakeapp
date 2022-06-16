@@ -15,17 +15,17 @@
             </div>
     </div>
 
-    <div class="row mt-2">
+    <div class="row">
         <div class="mx-auto col-10 col-lg-6 col-md-8">
-            <div class="mt-1 mb-4 d-flex justify-content-center">
+            <div class="mb-4 d-flex justify-content-center">
                 <th:block th:switch="${#locale.toLanguageTag()}">
                     <div th:case="'de'">
-                        <button class="custom-button locale-change-button"
+                        <button class="link"
                                 onclick="window.location.href='/?localeData=en'" type="button">Switch to English
                         </button>
                     </div>
                     <div th:case="'en'">
-                        <button class="custom-button locale-change-button"
+                        <button class="link"
                                 onclick="window.location.href='/?localeData=de'" type="button">zu Deutsch wechseln
                         </button>
                     </div>

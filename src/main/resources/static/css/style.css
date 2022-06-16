@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: var(--main-color-1) !important;
+    background-image: linear-gradient(45deg, var(--main-color-1), var(--main-color-2)) !important;
 }
 
 .title {
@@ -83,8 +83,9 @@ input[type=time].custom-time-input {
     width: 100%;
     max-width: 100px;
 
+    height: 2.2em;
     font-weight: 200;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 0.2em;
     padding-left: 7px;
 
@@ -108,6 +109,10 @@ input[type=number].custom-text-input {
 
     font-weight: 200;
     font-size: 14px;
+}
+
+input[type=number].custom-text-input {
+    max-width: 100px;
 }
 
 input[type=text].custom-text-input:focus,
@@ -138,9 +143,9 @@ select.custom-select:focus {
 
 .custom-button {
     display: inline-block;
-    border-radius: 2px;
+    border-radius: 3px;
     width: 90%;
-    max-width: 200px;
+    max-width: 180px;
     background-color: transparent;
     transition: 0.75s;
 }
@@ -150,12 +155,13 @@ select.custom-select:focus {
     transform: scale(1.1, 1.1);
     -webkit-transform: scale(1.1, 1.1);
     -moz-transform: scale(1.1, 1.1);
+
+    animation: bounce .3s infinite alternate;
 }
 
 .calculate-button {
     border: 2px solid var(--main-color-5);
     color: var(--main-color-4);
-    margin-right: 20px;
 }
 
 .calculate-button:hover,
@@ -185,4 +191,17 @@ select.custom-select:focus {
 .save-button:hover,
 .save-button:focus {
     background-color: var(--main-color-8);
+}
+
+button.link {
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    color: var(--main-color-4);
+}
+
+button.link:focus,
+button.link:hover,
+button.link:active {
+    color: var(--main-color-5);
 }
